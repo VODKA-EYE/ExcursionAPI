@@ -17,23 +17,23 @@ public partial class PostgresContext : DbContext
     }
 
     public virtual DbSet<Checkpoint> Checkpoints { get; set; }
-
+    
     public virtual DbSet<Comment> Comments { get; set; }
-
+    
     public virtual DbSet<Dbversion> Dbversions { get; set; }
-
+    
     public virtual DbSet<Excursion> Excursions { get; set; }
-
+    
     public virtual DbSet<Image> Images { get; set; }
-
+    
     public virtual DbSet<Role> Roles { get; set; }
-
+    
     public virtual DbSet<User> Users { get; set; }
 
     // Host=192.168.178.100:49165;Database=postgres;Username=vodka;Password=uWGw5eTR;
     // Host=vodka.chemirproject.net:82;Database=postgres;Username=vodka;Password=uWGw5eTR;
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
-        => optionsBuilder.UseLazyLoadingProxies().UseNpgsql("Host=192.168.178.100:49165;Database=postgres;Username=vodka;Password=uWGw5eTR;");
+        => optionsBuilder.UseLazyLoadingProxies().UseNpgsql("192.168.178.100:49165;Database=postgres;Username=vodka;Password=uWGw5eTR;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -79,6 +79,7 @@ public partial class PostgresContext : DbContext
             entity.Property(e => e.Commentary).HasColumnName("commentary");
             entity.Property(e => e.Commentator).HasColumnName("commentator");
             entity.Property(e => e.ExcursionId).HasColumnName("excursion_id");
+            entity.Property(e => e.CommentDate).HasColumnName("comment_date");
 
             entity.HasOne(d => d.Excursion).WithMany(p => p.Comments)
                 .HasForeignKey(d => d.ExcursionId)
