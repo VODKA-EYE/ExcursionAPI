@@ -14,6 +14,8 @@ public partial class Comment
 
     public int ExcursionId { get; set; }
     
+    public DateTime CommentDate { get; set; }
+    
     [JsonIgnore]
     public virtual Excursion Excursion { get; set; } = null!;
 }
