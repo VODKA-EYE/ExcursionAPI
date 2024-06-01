@@ -21,6 +21,7 @@ app.MapGet("/getcomments/{excursionID}", async (int excursionID, PostgresContext
 
 app.MapPost("/leavecomment", async (Comment comment, PostgresContext dbcontext) =>
 {
+  comment.CommentDate = DateTime.UtcNow;
   await dbcontext.Comments.AddAsync(comment);
   await dbcontext.SaveChangesAsync();
   return Results.Ok(comment);

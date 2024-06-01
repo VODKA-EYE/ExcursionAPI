@@ -33,7 +33,7 @@ public partial class PostgresContext : DbContext
     // Host=192.168.178.100:49165;Database=postgres;Username=vodka;Password=uWGw5eTR;
     // Host=vodka.chemirproject.net:82;Database=postgres;Username=vodka;Password=uWGw5eTR;
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
-        => optionsBuilder.UseLazyLoadingProxies().UseNpgsql("192.168.178.100:49165;Database=postgres;Username=vodka;Password=uWGw5eTR;");
+        => optionsBuilder.UseLazyLoadingProxies().UseNpgsql("Host=192.168.178.100:49165;Database=postgres;Username=vodka;Password=uWGw5eTR;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
